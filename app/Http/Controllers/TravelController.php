@@ -16,7 +16,7 @@ class TravelController extends Controller
     {
         //
         $travels = Travel::all();
-		return view('travels.index', compact('travels'));
+		return view('travels.index', compact('travel'));
     }
 
     /**
@@ -27,9 +27,9 @@ class TravelController extends Controller
     public function create()
     {
     		$travel = new Travel;
-			
+
         //
-        return view('travels.create',compact('book'));
+        return view('travels.create',compact('travel'));
     }
 
     /**
@@ -40,7 +40,7 @@ class TravelController extends Controller
      */
     public function store(Request $request)
     {
-        //1. validate the inputted data 
+        //1. validate the inputted data
                 $request->validate([
                   'name'=>'required',
                   'city'=> 'required',
@@ -81,7 +81,7 @@ class TravelController extends Controller
     {
         //
         $travel = Travel::find($id);
-        return view('travels.edit', compact('travel'));  
+        return view('travels.edit', compact('travel'));
     }
 
     /**
@@ -94,7 +94,7 @@ class TravelController extends Controller
     public function update(Request $request, $id)
     {
         //
-         //1. validate the inputted data 
+         //1. validate the inputted data
                 $request->validate([
                   'name'=>'required',
                   'city'=> 'required',
@@ -103,18 +103,18 @@ class TravelController extends Controller
                   ]);
                   //2. search the book from database
                   $travel = Travel::find($id);
-                  
-                  //3. set the new values 
+
+                  //3. set the new values
                   $travel->name = $request->get('name');
                   $travel->city = $request->get('city');
                   $travel->description = $request->get('description');
                   $travel->image_url = $request->get('image_url');
-                  
+
                   //4. save the book into database
                   $travel->save();
- 
-                   return redirect('/travels')->with('success', 'Travel notes has been updated');    
-        
+
+                   return redirect('/travels')->with('success', 'Travel notes has been updated');
+
     }
 
     /**
