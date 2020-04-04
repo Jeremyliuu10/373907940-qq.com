@@ -44,15 +44,15 @@ class TravelController extends Controller
                 $request->validate([
                   'name'=>'required',
                   'city'=> 'required',
+                  'title'=> 'required',
                   'description'=> 'required',
-                  'image_url' => 'required'
                   ]);
                 //2. create a new book model
                 $travel = new Travel([
                   'name' => $request->get('name'),
                   'city'=> $request->get('city'),
+                  'title'=> $request->get('title'),
                   'description'=> $request->get('description'),
-                  'image_url'=> $request->get('image_url')
                   ]);
                 //3. save the data into database
                 $travel->save();
@@ -99,7 +99,7 @@ class TravelController extends Controller
                   'name'=>'required',
                   'city'=> 'required',
                   'description'=> 'required',
-                  'image_url' => 'required'
+                  'title' => 'required'
                   ]);
                   //2. search the book from database
                   $travel = Travel::find($id);
@@ -108,7 +108,7 @@ class TravelController extends Controller
                   $travel->name = $request->get('name');
                   $travel->city = $request->get('city');
                   $travel->description = $request->get('description');
-                  $travel->image_url = $request->get('image_url');
+                  $travel->title = $request->get('title');
 
                   //4. save the book into database
                   $travel->save();

@@ -7,7 +7,7 @@
   }
 </style>
 <div class="title">
-    Edit the Book
+    Edit the travel-notes
 </div>
 <div class="message">
         @if ($errors->any())
@@ -30,17 +30,18 @@
                         <td><input name="name" type="text" value="{{ $travel->name }}" class="form-control" /></td>
                 </tr>
         <tr>
-                        <td><label for="name" >Travel Author</label></td>
+                        <td><label for="name" >city </label></td>
                         <td><input name="city" type="text" value="{{ $travel->city }}" class="form-control"/></td>
                 </tr>
                 <tr>
-                        <td><label for="name" >Travel Price</label></td>
+                                <td><label for="name" > title</label></td>
+                                <td><input name="title" type="text" value="{{ $travel->title }}" class="form-control"/></td>
+                        </tr>
+                <tr>
+                        <td><label for="name" >Travel description</label></td>
                         <td><input name="description" type="text" value="{{ $travel->description }}" class="form-control"/></td>
                 </tr>
-        <tr>
-                        <td><label for="name" >Travel Image</label></td>
-                        <td><input name="image_url" type="text" value="{{ $travel->image_url }}" class="form-control"/></td>
-                </tr>
+
                  <tr><td></td><td><button type="submit">Update</button></td></tr>
         </tbody>
                 </table>

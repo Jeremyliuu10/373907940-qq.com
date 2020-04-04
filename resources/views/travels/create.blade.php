@@ -32,14 +32,15 @@
                         <td><label for="name" >Travel City</label></td>
                         <td><input name="city" type="text" class="form-control"/></td>
                 </tr>
+        <tr>
+                        <td><label for="name" >Title</label></td>
+                        <td><input name="title" type="text" class="form-control"/></td>
+                </tr>
                 <tr>
                         <td><label for="name" >Travel Description</label></td>
                         <td><input name="description" type="text" class="form-control"/></td>
                 </tr>
-        <tr>
-                        <td><label for="name" >Travel Image</label></td>
-                        <td><input name="image_url" type="text" class="form-control"/></td>
-                </tr>
+
                  <tr>
                         <td></td><td><button type="submit">Add</button></td>
                 </tr>
