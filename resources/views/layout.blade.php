@@ -24,8 +24,10 @@
           </tr>
         </table> -->
       </center>
-      <h1><p>Welcome to our Travellers Web!  66666</p></h1>
-    </nav>
+<<<<<<< HEAD
+      <h1><p>Welcome to our Travellers Web!  6667</p></h1>
+=======
+
 
   </header>
   <div class="container">
