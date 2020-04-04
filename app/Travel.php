@@ -11,6 +11,6 @@ class Travel extends Model
           'name',
           'city',
           'description',
-          'image_url'
+          'title'
           ];
 }
