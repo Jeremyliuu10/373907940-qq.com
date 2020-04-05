@@ -8,15 +8,9 @@
 </style>
 <div class="uper">
   @if(session()->get('success'))
-<<<<<<< HEAD
     <div class="alert alert-success">
       {{ session()->get('success') }}
     </div><br />
-=======
-  <div class="alert alert-success">
-    {{ session()->get('success') }}
-  </div><br />
->>>>>>> 2ea147acad9dbd35fcfa8cc3fa05fbd6c8148872
   @endif
   <center>
     <table class="table table-striped" border="1px" style="margin: 50px;">
@@ -40,10 +34,5 @@
       </tbody>
     </table>
   </center>
-<<<<<<< HEAD
 <div>
 @endsection
-=======
-  <div>
-    @endsection
->>>>>>> 2ea147acad9dbd35fcfa8cc3fa05fbd6c8148872

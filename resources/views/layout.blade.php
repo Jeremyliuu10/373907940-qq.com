@@ -12,8 +12,8 @@
 <body>
   <header>
     <nav>
-      <center>
-        <!-- <table width="700">
+      <!-- <center>
+        <table width="700">
           <tr valign="bottom">
             <td class="value"><a href="/"><img src="/images/logo.jpg" border="0" width="180" /> </a></td>
             <td class="value"><a href="/"><img src="/images/home.png" border="0" width="55"></a></td>
@@ -22,10 +22,10 @@
             <td class="value"><a href="/login"><img src="/images/login.png" border="0" width="55"></a></td>
             <td class="value"><a href="/"><img src="/images/admin.png" border="0" width="55"></a></td>
           </tr>
-        </table> -->
-      </center>
+        </table>
+      </center> -->
 <<<<<<< HEAD
-      <h1><p>Welcome to our Travellers Web!  6667</p></h1>
+      <h1><p>Welcome to our Travellers Web!  6667++++</p></h1>
 =======
 
 
