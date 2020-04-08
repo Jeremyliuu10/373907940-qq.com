@@ -15,7 +15,7 @@
 			<div id="wrapper" class="fade-in">
 				<!-- Intro -->
 					<div id="intro">
-						<h1>welcome to<br />
+						<h1>7897876 welcome to<br />
 						tourist paradise</h1>
 						<p>My name is Xiaoxiao liao, I would like to recommend the best travelnotes websites in the world</p>
 						<ul class="actions">
