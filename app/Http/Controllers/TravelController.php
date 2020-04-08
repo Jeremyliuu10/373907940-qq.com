@@ -44,9 +44,11 @@ class TravelController extends Controller
         //1. validate the inputted data
                 $request->validate([
                   'name'=>'required',
-                  'city'=> 'required',
                   'title'=> 'required',
                   'description'=> 'required',
+                  'city'=> 'required',
+                  'start_date'=>'required|date',
+                  'end_date'=>'date'
                   ]);
                 //2. create a new book model
                 $travel = new Travel([
@@ -54,6 +56,8 @@ class TravelController extends Controller
                   'city'=> $request->get('city'),
                   'title'=> $request->get('title'),
                   'description'=> $request->get('description'),
+                  'start_date'=>$request->get(''),
+                  'end_date'=>$request->get('')
                   ]);
                 //3. save the data into database
                 $travel->save();
@@ -110,12 +114,12 @@ class TravelController extends Controller
                   $travel->city = $request->get('city');
                   $travel->description = $request->get('description');
                   $travel->title = $request->get('title');
-
+                  $travel->start_date=$request->get('start_date');
+                  $travel->end_date=$request->get('end_date');
                   //4. save the book into database
                   $travel->save();
 
-                   return redirect('/travels')->with('success', 'Travel notes has been updated');
-
+                  return redirect('/travels')->with('success', 'Travel notes has been updated');
     }
 
     /**
