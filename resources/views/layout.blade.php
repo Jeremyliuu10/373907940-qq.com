@@ -31,9 +31,9 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">Sharing from others</a></li>
-							<li><a href="#">Post a new note</a></li>
-							<li><a href="#">Personal Center</a></li>
+							<li class="active"><a href="/travels">Sharing from others</a></li>
+							<li><a href="/travels/create">Post a new note</a></li>
+							<li><a href="/users">Personal Center</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>

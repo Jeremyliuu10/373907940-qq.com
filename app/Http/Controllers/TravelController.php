@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Travel;
+use App\Tag;
 
 class TravelController extends Controller
 {
@@ -19,7 +20,6 @@ class TravelController extends Controller
         return view('travels.index', compact('travels'));
         
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -28,8 +28,6 @@ class TravelController extends Controller
     public function create()
     {
     		$travel = new Travel;
-
-        //
         return view('travels.create',compact('travel'));
     }
 
@@ -47,20 +45,27 @@ class TravelController extends Controller
                   'title'=> 'required',
                   'description'=> 'required',
                   'city'=> 'required',
+                  'tag'=> 'required',
                   'start_date'=>'required|date',
-                  'end_date'=>'date'
+                  'end_date'=>'required|date'
                   ]);
                 //2. create a new book model
                 $travel = new Travel([
                   'name' => $request->get('name'),
                   'city'=> $request->get('city'),
                   'title'=> $request->get('title'),
+                  'tag'=> $request->get('tag'),
                   'description'=> $request->get('description'),
-                  'start_date'=>$request->get(''),
-                  'end_date'=>$request->get('')
+                  'start_date'=>$request->get('start_date'),
+                  'end_date'=>$request->get('end_date')
                   ]);
                 //3. save the data into database
                 $travel->save();
+
+
+                //4. search the tag from tags
+                Tag::where('tag_name', $request->get('tag'))->increment('tag_count');
+
                 return redirect('/travels')->with('success', 'travel notes has been added');    }
 
     /**
@@ -102,9 +107,12 @@ class TravelController extends Controller
          //1. validate the inputted data
                 $request->validate([
                   'name'=>'required',
-                  'city'=> 'required',
+                  'title'=> 'required',
                   'description'=> 'required',
-                  'title' => 'required'
+                  'city'=> 'required',
+                  'tag'=> 'required',
+                  'start_date'=>'required|date',
+                  'end_date'=>'required|date'
                   ]);
                   //2. search the book from database
                   $travel = Travel::find($id);
@@ -112,6 +120,16 @@ class TravelController extends Controller
                   //3. set the new values
                   $travel->name = $request->get('name');
                   $travel->city = $request->get('city');
+
+                  //如果tag进行修改
+                  if($request->get('tag')<>'0'){
+                    $travel->tag= $request->get('tag');
+                    Tag::where('tag_name', $request->get('tag'))->increment('tag_count');
+                    Tag::where('tag_name', $request->get('ex_tag'))->decrement('tag_count');
+                    //Tag计数调整
+                  }else{
+                   $travel->tag= $request->get('ex_tag');
+                  }
                   $travel->description = $request->get('description');
                   $travel->title = $request->get('title');
                   $travel->start_date=$request->get('start_date');
