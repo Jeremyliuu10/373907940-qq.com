@@ -2,100 +2,127 @@
 
 @section('content')
 
+
 <!-- Main -->
 <div id="main">
+
+  <aside>
+
+    <div class="container">
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>Search by cities </h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <input type="text" class="form-controller" id="search" name="search"></input>
+            </div>
+            <table id="myTable" class="tablesorter">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Travel Note Title</th>
+                  <th>Traveller Name</th>
+                  <th>Travel City</th>
+                  <th>Travel Description</th>
+                  <th>Travel Start Date</th>
+                  <th>Travel End Date</th>
+                </tr>
+              </thead>
+              <tbody id="search_result"  class="tablesorter">
+                <!-- @foreach($travels as $travel)
+                <tr>
+                  <td><a href="{{ route('travels.show',$travel->id)}}">{{$travel->id}}</a></td>
+                  <td><a href="{{ route('travels.show',$travel->id)}}">{{$travel->title}}</a></td>
+                  <td>{{$travel->name}}</td>
+                  <td>{{$travel->city}}</td>
+                  <td>{{$travel->description}}</td>
+                  <td>{{$travel->start_date}}</td>
+                  <td>{{$travel->end_date}} <br /></td>
+                </tr>
+                @endforeach -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </aside>
+
   <center>
-    <table class="table table-striped" border="1px" style="margin: 50px;">
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>Travel Note Title</td>
-          <td>Traveller Name</td>
-          <td>Travel City</td>
-          <td>Travel Description</td>
-          <td>Travel Start Date</td>
-          <td>Travel End Date</td>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($travels as $travel)
-        <tr>
-          <td><a href="{{ route('travels.show',$travel->id)}}">{{$travel->id}}</a></td>
-          <td><a href="{{ route('travels.show',$travel->id)}}">{{$travel->title}}</a></td>
-          <td>{{$travel->name}}</td>
-          <td>{{$travel->city}}</td>
-          <td>{{$travel->description}}</td>
-          <td>{{$travel->start_date}}</td>
-          <td>{{$travel->end_date}}</td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+    @foreach($travels as $travel)
+    <article>
+      <header>
+        <span class="date">start from {{$travel->start_date}} to {{$travel->end_date}}</span>
+        <h2><a href="#">{{$travel->name}} in {{$travel->city}}</a></h2>
+      </header>
+      <a href="#"><img src="images/pic10.jpg" width=60% alt="" /></a>
+      <p style="text-align:center">{{$travel->description}}</p>
+      <ul class="actions special">
+        <li><a href="#" class="button">Full Story</a></li>
+      </ul>
+    </article>
+
+
+    <!-- <tr>
+  <td><a href="{{ route('travels.show',$travel->id)}}">{{$travel->id}}</a></td>
+  <td><a href="{{ route('travels.show',$travel->id)}}">{{$travel->title}}</a></td>
+  <td>{{$travel->name}}</td>
+  <td>{{$travel->city}}</td>
+  <td>{{$travel->description}}</td>
+  <td>{{$travel->start_date}}</td>
+  <td>{{$travel->end_date}} <br/></td>
+</tr> -->
+    @endforeach
   </center>
-  <!-- Featured Post -->
-  <article class="post featured">
-    <header class="major">
-      <span class="date">April 25, 2017</span>
-      <h2><a href="#">Penny in Thailand</a></a></h2>
-      <p>Thailand, the fatanstic city. I really enjoy it a lot!!!!</p>
-    </header>
-    <a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-    <ul class="actions special">
-      <li><a href="#" class="button large">Full Story</a></li>
-    </ul>
-
-  </article>
-
 
   <!-- Posts -->
   <section class="posts">
-    <article>
-      <header>
-        <span class="date">April 24, 2017</span>
-        <h2><a href="#">User A</a></h2>
-      </header>
-      <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-      <p>Travelnotes from User A</p>
-      <ul class="actions special">
-        <li><a href="#" class="button">Full Story</a></li>
-      </ul>
-    </article>
-    <article>
-      <header>
-        <span class="date">April 22, 2017</span>
-        <h2><a href="#">User B</a></h2>
-      </header>
-      <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-      <p>Travelnotes from User B</p>
-      <ul class="actions special">
-        <li><a href="#" class="button">Full Story</a></li>
-      </ul>
-    </article>
-    <article>
-      <header>
-        <span class="date">April 18, 2017</span>
-        <h2><a href="#">User C</h2>
-      </header>
-      <a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-      <p>Travelnotes from User C</p>
-      <ul class="actions special">
-        <li><a href="#" class="button">Full Story</a></li>
-      </ul>
-    </article>
-    <article>
-      <header>
-        <span class="date">April 14, 2017</span>
-        <h2><a href="#">User D<br />
-            nulla imperdiet</a></h2>
-      </header>
-      <a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-      <p>Travelnotes from User D</p>
-      <ul class="actions special">
-        <li><a href="#" class="button">Full Story</a></li>
-      </ul>
-    </article>
-
   </section>
 </div>
+
+<script type="text/javascript">
+  $('#search').on('keyup', function() {
+    $value = $(this).val();
+    $.ajax({
+      type: 'get',
+      url: '{{URL::to('search')}}',
+      data: {
+        'search': $value
+      },
+
+      success: function(data) {
+        $('#search_result').html(data);
+        $("#myTable").trigger("update");
+      }
+    });
+  })
+
+
+  $("#myTable").tablesorter({
+    sortInitialOrder: "asc",
+    theme: "blue",
+    sortList: [
+      [0, 0]
+    ],
+    header: {
+      1: {
+        sorter: false
+      }
+    }
+  });
+</script>
+<script type="text/javascript">
+  $.ajaxSetup({
+    headers: {
+      'csrftoken': '{{ csrf_token() }}'
+    }
+  });
+</script>
+
+
 
 @endsection

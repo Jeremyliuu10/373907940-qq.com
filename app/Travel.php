@@ -12,6 +12,7 @@ class Travel extends Model
         'title',
         'description',
         'city',
+        'tag',
         'start_date',
         'end_date'
     ];

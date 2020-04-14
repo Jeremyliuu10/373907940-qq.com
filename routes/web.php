@@ -18,6 +18,14 @@ Route::resource('travels', 'TravelController')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/travels/create',function(){
     return view('travels.create');
 });
+
+<<<<<<< Updated upstream
+Route::resource('users', 'UserController')->middleware('auth');
+=======
+Route::get('/','SearchController@index');
+Route::get('/search','SearchController@search');
+>>>>>>> Stashed changes

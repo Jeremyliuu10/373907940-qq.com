@@ -5,8 +5,17 @@
 		<title>Travelnotes sharing</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="_token" content="{{ csrf_token() }}">
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<link rel="stylesheet" href="/assets/css/noscript.css" />
+		<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="/js/jquery-ui-1.10.0.custom.min.js"></script>
+		<script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+		<link rel="stylesheet" href="/css/theme.blue.css">
+		<script src="/js/jquery.tablesorter.js"></script>
+
+
 
 </head>
 
@@ -15,7 +24,11 @@
 			<div id="wrapper" class="fade-in">
 				<!-- Intro -->
 					<div id="intro">
-						<h1>  666dsadsa welcome to<br />
+<<<<<<< Updated upstream
+						<h1>888888 welcome to<br />
+=======
+						<h1> welcome to<br />
+>>>>>>> Stashed changes
 						tourist paradise</h1>
 						<p>My name is Xiaoxiao liao, I would like to recommend the best travelnotes websites in the world</p>
 						<ul class="actions">
@@ -25,21 +38,21 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">Travel around the world</a>
+						<a href="/" class="logo">Travel around the world</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">Sharing from others</a></li>
-							<li><a href="#">Post a new note</a></li>
-							<li><a href="#">Personal Center</a></li>
+							<li class="active"><a href="/travels">Sharing from others</a></li>
+							<li><a href="/travels/create">Post a new note</a></li>
+							<li><a href="/users">Personal Center</a></li>
 						</ul>
 						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="/" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="/" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
 					</nav>
 
