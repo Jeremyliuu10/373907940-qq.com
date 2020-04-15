@@ -24,13 +24,9 @@
 			<div id="wrapper" class="fade-in">
 				<!-- Intro -->
 					<div id="intro">
-<<<<<<< Updated upstream
-						<h1>888888 welcome to<br />
-=======
 						<h1> welcome to<br />
->>>>>>> Stashed changes
 						tourist paradise</h1>
-						<p>My name is Xiaoxiao liao, I would like to recommend the best travelnotes websites in the world</p>
+						<p>I would like to recommend the best travel notes websites in the world</p>
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
 						</ul>
@@ -44,39 +40,43 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="/travels">Sharing from others</a></li>
-							<li><a href="/travels/create">Post a new note</a></li>
-							<li><a href="/users">Personal Center</a></li>
+							<li id="a_posts"><a href="/travels">Sharing from others</a></li>
+							<li id="a_create"><a href="/travels/create">Post a new note</a></li>
+							<li id="a_self"><a href="/users">Personal Center</a></li>
 						</ul>
 						<ul class="icons">
-							<li><a href="/" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="/" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
+							<li><a href="https://www.twitter.com" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="https://www.facebook.com" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.instagram.com" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="https://www.github.com" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+            </ul>
+            <script>
+              var a_posts=document.getElementById("a_posts");
+              var a_create=document.getElementById("a_create");
+              var a_self=document.getElementById("a_self");
+
+              a_posts.onclick=function(){
+                a_posts.className="active";
+                a_create.className="";
+                a_self.className="";
+              };
+              a_create.onclick=function(){
+                a_posts.className="";
+                a_create.className="active";
+                a_self.className="";
+              };
+              a_self.onclick=function(){
+                a_posts.className="";
+                a_create.className="";
+                a_self.className="active";
+              };
+              
+            </script>
 					</nav>
 
                     <div class="container">
                       @yield('content')
                     </div>
-
-						<!-- Footer -->
-							<footer id="footer">
-
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-
-							</footer>
-
 
 
 				<!-- Copyright -->

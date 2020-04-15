@@ -10,7 +10,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (){
     return view('welcome');
 });
 
@@ -24,5 +24,9 @@ Route::get('/travels/create',function(){
 });
 
 Route::resource('users', 'UserController')->middleware('auth');
-Route::get('/','SearchController@index');
+
+Route::resource('comments','CommentController')->middleware('auth');
+
+Route::get('/comments','CommentController@store');
+
 Route::get('/search','SearchController@search');

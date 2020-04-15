@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Travel;
-use App\Tag;
-use App\User;
-use Illuminate\Support\Facades\Auth;
-use DB;
+use App\Comment;
+use Illuminate\Auth\Access\Response;
 
-
-class UserController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        // 获取当前已认证的用户...
-        $user = Auth::user();
-        $travels = DB::table('travels')->where('name', 'LIKE', '%' . $user->name . "%")->get();
-        return view('users.index', compact('travels'));
+        // $comments=Comment::all();
+        // return view('travels.show', compact('comments'));
     }
 
     /**
@@ -33,8 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $travel = new Travel;
-        return view('travels.create', compact('travel'));
+        //
     }
 
     /**
@@ -45,7 +37,33 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //echo("<script>console.log('testing: enter store function')</script>");
+        $request->validate([
+            'reviewer'=>'required',
+            'reviewee'=>'required',
+            'comment'=>'required',
+            'travel_post_id'=>'required'
+        ]);
+        $comment=new Comment([
+            'reviewer'=>$request->get('reviewer'),
+            'reviewee'=>$request->get('reviewee'),
+            'comment'=>$request->get('comment'),
+            'travel_post_id'=>$request->get('travel_post_id')
+        ]);
+        $comment->save();
+        //echo("<script>console.log('testing: after save()')</script>");
+        $output="";
+        if ($request->ajax()){
+            //echo("<script>console.log('testing: enter resuest->ajax()')</script>");
+            $new_comments=Comment::where('travel_post_id',$request->get('travel_post_id'))->get();
+            if($new_comments){
+                foreach($new_comments as $key=>$new_comment){
+                    $output.='<tr><td>'.$new_comment->reviewer.': '.$new_comment->comment.'</td></tr>';
+                }
+            }
+            return Response($output);
+        }
+       //TODO:输出到show.blade.php里的comments表格中，不要用redirect返回
     }
 
     /**
@@ -57,8 +75,6 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        $travel = Travel::find($id);
-        return view('travels.show', compact('travel'));
     }
 
     /**

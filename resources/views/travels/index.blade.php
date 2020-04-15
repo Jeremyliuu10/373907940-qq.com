@@ -31,7 +31,7 @@
                 </tr>
               </thead>
               <tbody id="search_result"  class="tablesorter">
-                <!-- @foreach($travels as $travel)
+                @foreach($travels as $travel)
                 <tr>
                   <td><a href="{{ route('travels.show',$travel->id)}}">{{$travel->id}}</a></td>
                   <td><a href="{{ route('travels.show',$travel->id)}}">{{$travel->title}}</a></td>
@@ -41,7 +41,7 @@
                   <td>{{$travel->start_date}}</td>
                   <td>{{$travel->end_date}} <br /></td>
                 </tr>
-                @endforeach -->
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -59,7 +59,7 @@
         <span class="date">start from {{$travel->start_date}} to {{$travel->end_date}}</span>
         <h2><a href="#">{{$travel->name}} in {{$travel->city}}</a></h2>
       </header>
-      <a href="#"><img src="images/pic10.jpg" width=60% alt="" /></a>
+      <a href="#"><img src="/images/{{ $travel->tag}}.jpg" width=60% alt="" /></a>
       <p style="text-align:center">{{$travel->description}}</p>
       <ul class="actions special">
         <li><a href="#" class="button">Full Story</a></li>

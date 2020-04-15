@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Travel;
 use App\Tag;
+use App\Comment;
 
 class TravelController extends Controller
 {
@@ -66,7 +68,8 @@ class TravelController extends Controller
                 //4. search the tag from tags
                 Tag::where('tag_name', $request->get('tag'))->increment('tag_count');
 
-                return redirect('/travels')->with('success', 'travel notes has been added');    }
+                return redirect('/travels')->with('success', 'travel notes has been added');    
+              }
 
     /**
      * Display the specified resource.
@@ -78,7 +81,9 @@ class TravelController extends Controller
     {
         //
         $travel = Travel::find($id);
-		return view('travels.show', compact('travel'));
+        $comments=Comment::where('travel_post_id',$id)->get();
+        return view('travels.show', compact('travel','comments'));
+        return view('travels.show', compact('travel'));
     }
 
     /**
@@ -114,7 +119,7 @@ class TravelController extends Controller
                   'start_date'=>'required|date',
                   'end_date'=>'required|date'
                   ]);
-                  //2. search the book from database
+                  //2. search the post from database
                   $travel = Travel::find($id);
 
                   //3. set the new values
@@ -128,7 +133,7 @@ class TravelController extends Controller
                     Tag::where('tag_name', $request->get('ex_tag'))->decrement('tag_count');
                     //Tag计数调整
                   }else{
-                   $travel->tag= $request->get('ex_tag');
+                    $travel->tag= $request->get('ex_tag');
                   }
                   $travel->description = $request->get('description');
                   $travel->title = $request->get('title');

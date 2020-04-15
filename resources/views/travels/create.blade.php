@@ -1,9 +1,9 @@
 @extends('layout')
 @section('content')
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.8.24/themes/base/jquery-ui.css">
-  <script type="text/javascript" src="//code.jquery.com/jquery-1.8.2.js"></script>
-  <script type="text/javascript" src="//code.jquery.com/ui/1.8.24/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.24/themes/base/jquery-ui.css">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="//code.jquery.com/ui/1.8.24/jquery-ui.js"></script>
 
 <div class="title">
         Add a New Travel notes
@@ -21,79 +21,83 @@
 </div>
 
 <div id="main">
-<center>
-<table class="table table-striped" border="1px" width="80%">
-      <thead>
-         <tr>
-          <td><label id="username" name="user">Welcome! {{ Auth::user()->name }}  ,you can record your new travel story☺ </label></td>
-          </tr>          
-</table>
-<form method="post" action="{{ route('travels.store') }}">
-        {{ csrf_field() }}
-        
-        <!-- <table class="table table-striped" border="1px" style="margin: 50px;"> -->
-        <table class="table table-striped" >
-                <tbody>
-                        <tr>
-                                <td width="20%"><label for="name">Title</label></td>
-                                <td><input name="title" type="text" class="form-control" /></td>
-                        </tr>
-                        <tr>
-                                <td><label for="name">Traveller Name</label></td>
-                                <td><input name="name" type="text" class="form-control" value="{{ Auth::user()->name }}"/></td>
-                        </tr>
-                        <tr>
-                                <td><label for="name">Travel City</label></td>
-                                <td><input name="city" type="text" class="form-control" /></td>
-                        </tr>
-                        <tr>
-                                <td><label for="name">Tag</label></td>
-                                <td>
-	        	        <!-- <INPUT type="hidden" id="tag" >  -->
-                                <select id="tag" name="tag">
-                                        <option value="0" selected="selected">Please choose one tag</option>
-                                        <option value="Modern city">Modern city</option>
-                                        <option value="Idyllic scenery">Idyllic scenery</option>
-                                        <option value="Historic sites">Historic sites</option>
-                                        <option value="Secondary element">Secondary element</option>
-                                        <option value="Exotic landscape">Exotic landscape</option>
-                                        <option value="Ancient town">Ancient town</option>
-                                        <option value="Seascape">Seascape</option>
-                                        <option value="Valley">Valley</option>
-                                        <option value="Desert">Desert</option>
-                                </select>
-			</td>
-                        </tr>
-                        <tr>
-                                <td><label for="name">Travel Description</label></td>
-                                <td><input name="description" type="text" class="form-control" line-height="30px" /></td>
-                        </tr>
+        <center>
+                <table class="table table-striped" border="1px" width="80%">
+                        <thead>
+                                <tr>
+                                        <td><label id="username" name="user">Welcome! {{ Auth::user()->name }} ,you can record your new travel story☺ </label></td>
+                                </tr>
+                </table>
+                <form method="post" action="{{ route('travels.store') }}">
+                        {{ csrf_field() }}
 
-                        <tr>
-                                <td><label for="name">Start Date</label></td>
-                                <td><input name="start_date" id="datepicker" class="form-control" /></td>
-                        </tr>
-                        <tr>
-                                <td><label for="name">End Date</label></td>
-                                <td><input name="end_date" id="datepicker2" class="form-control" /></td>
-                        </tr>
+                        <!-- <table class="table table-striped" border="1px" style="margin: 50px;"> -->
+                        <table class="table table-striped">
+                                <tbody>
+                                        <tr>
+                                                <td width="20%"><label for="name">Title</label></td>
+                                                <td><input name="title" type="text" class="form-control" /></td>
+                                        </tr>
+                                        <tr>
+                                                <td><label for="name">Traveller Name</label></td>
+                                                <td><input name="name" type="text" class="form-control" value="{{ Auth::user()->name }}" /></td>
+                                        </tr>
+                                        <tr>
+                                                <td><label for="name">Travel City</label></td>
+                                                <td><input name="city" type="text" class="form-control" /></td>
+                                        </tr>
+                                        <tr>
+                                                <td><label for="name">Tag</label></td>
+                                                <td>
+                                                        <!-- <INPUT type="hidden" id="tag" >  -->
+                                                        <select id="tag" name="tag">
+                                                                <option value="0" selected="selected">Please choose one tag</option>
+                                                                <option value="Modern city">Modern city</option>
+                                                                <option value="Idyllic scenery">Idyllic scenery</option>
+                                                                <option value="Historic sites">Historic sites</option>
+                                                                <option value="Secondary element">Secondary element</option>
+                                                                <option value="Exotic landscape">Exotic landscape</option>
+                                                                <option value="Ancient town">Ancient town</option>
+                                                                <option value="Seascape">Seascape</option>
+                                                                <option value="Valley">Valley</option>
+                                                                <option value="Desert">Desert</option>
+                                                        </select>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td><label for="name">Travel Description</label></td>
+                                                <td><input name="description" type="text" class="form-control" line-height="30px" /></td>
+                                        </tr>
 
-                        <tr>
-                                <td></td>
-                                <td><button type="submit">Add</button></td>
-                        </tr>
-                </tbody>
-                <!-- TODO:URL->TAGS;  -->
-        </table>
+                                        <tr>
+                                                <td><label for="name">Start Date</label></td>
+                                                <td><input name="start_date" id="datepicker" class="form-control" /></td>
+                                        </tr>
+                                        <tr>
+                                                <td><label for="name">End Date</label></td>
+                                                <td><input name="end_date" id="datepicker2" class="form-control" /></td>
+                                        </tr>
 
-</form>
-</center>
+                                        <tr>
+                                                <td></td>
+                                                <td><button type="submit">Add</button></td>
+                                        </tr>
+                                </tbody>
+                                <!-- TODO:URL->TAGS;  -->
+                        </table>
+
+                </form>
+        </center>
 
 </div>
 
 <script>
-        $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
-        $( "#datepicker2" ).datepicker({dateFormat: "yy-mm-dd"});
+        $("#datepicker").datepicker({
+                dateFormat: "yy-mm-dd"
+        });
+        $("#datepicker2").datepicker({
+                dateFormat: "yy-mm-dd"
+        });
 </script>
 
 <!-- <div id="map">
