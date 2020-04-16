@@ -46,11 +46,11 @@
                 <td>{{ $travel->title }}</td>
               </tr>
               <tr>
-                <td>Traveller Name</td>
+                <td>Traveller</td>
                 <td>{{ $travel->name }}</td>
               </tr>
               <tr>
-                <td>Travel City</td>
+                <td>Destination</td>
                 <td>{{ $travel->city }}</td>
               </tr>
               <tr>
@@ -58,7 +58,7 @@
                 <td>{{ $travel->tag }}</td>
               </tr>
               <tr>
-                <td>Travel Description</td>
+                <td>Description</td>
                 <td>{{ $travel->description }}</td>
               </tr>
               <tr>
@@ -70,8 +70,13 @@
                 <td>{{ $travel->end_date}}</td>
               </tr>
               <tr>
-                <td>Travel Image</td>
-                <td><img src="/images/{{ $travel->tag}}.jpg" width='60%' /></td>
+                <td>Image</td>
+                <td><img src="/images/{{ $travel->tag}}.jpg" width='80%' /></td>
+              </tr>
+              <!-- TODO: Likes -->
+              <tr>
+                <td><i id="thumb" class="far fa-thumbs-up"></i></td>
+                <td></td>
               </tr>
             </tbody>
           </table>
@@ -82,7 +87,46 @@
         </div>
       </div>
 
-      <!-- TODO: Likes -->
+      <script>
+        $(function(){
+          
+          $.ajax({
+            url:"/likes",
+            type:"get",
+            data:{
+              "id": $("#travel_post_id").val(),
+              "user_name":$("#reviewer").val()
+            },
+            success:function(result){
+              console.log("id:"+$("#travel_post_id").val()+" user:"+$("#reviewer").val()+" result:"+result);
+              if(result!=""){
+                var i=document.getElementById("thumb");
+                i.setAttribute("class","fas fa-thumbs-up");
+              }else{
+                var i=document.getElementById("thumb");
+                i.setAttribute("class","far fa-thumbs-up");
+              }
+            }
+          });
+        });
+        $(document).on("click","#thumb",function(){
+          //console.log("click testing");
+          $.ajax({
+            url:"/likes",
+            type:"get",
+            data:{
+              "id": $("#travel_post_id").val(),
+              "user_name":$("#reviewer").val()
+            },
+            success:function(result){
+              if(result){
+                var i=document.getElementById("thumb");
+                i.setAttribute("class","fas fa-thumbs-up");
+              }
+            }
+          });
+        })
+      </script>
 
       <div class="row">
         <div class="col-8">
@@ -144,9 +188,7 @@
                   "travel_post_id": $("#travel_post_id").val(),
                   "comment": $("#comment").val()
                 },
-                success: function(data,textStatus,jqxhr) {
-                  //console.log("Ajax success branch");
-                  //console.log(data);
+                success: function(data) {
                   $("#comments").html(data);
                   document.getElementById("comment").value="";
                 },
