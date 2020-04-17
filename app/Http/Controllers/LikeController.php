@@ -76,7 +76,6 @@ class LikeController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -99,6 +98,18 @@ class LikeController extends Controller
      */
     public function destroy($id)
     {
-        //
+    }
+
+    public function unlike(Request $request){
+        if($request->ajax()){
+            $like_record=Like::where([
+                ['id',$request->get('id')],
+                ['user_name',$request->get('user_name')]
+            ]);
+            //echo("<script>console.log('like_record: ".$like_record->get()."');</script>");
+            $like_record->delete();
+            $like_record=null;
+            return Response($like_record);
+        }
     }
 }

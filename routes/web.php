@@ -29,5 +29,6 @@ Route::resource('comments','CommentController')->middleware('auth');
 
 Route::get('/comments','CommentController@store');
 Route::get('/likes','LikeController@store');
+Route::get('/no_like','LikeController@unlike');
 
 Route::get('/search','SearchController@search');

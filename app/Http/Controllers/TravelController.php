@@ -29,7 +29,7 @@ class TravelController extends Controller
      */
     public function create()
     {
-    		$travel = new Travel;
+        $travel = new Travel;
         return view('travels.create',compact('travel'));
     }
 

@@ -83,48 +83,76 @@
         </div>
         <div class="col-4">
           <aside>在这里放API</aside>
-          <!-- TODO: Hotel and Weather and Maps?? -->
+          <!-- TODO: Hotel and Maps?? -->
         </div>
       </div>
 
       <script>
-        $(function(){
-          
+        //在document ready的时候获取点赞数据
+        $(function() {
+
           $.ajax({
-            url:"/likes",
-            type:"get",
-            data:{
+            url: "/likes",
+            type: "get",
+            data: {
               "id": $("#travel_post_id").val(),
-              "user_name":$("#reviewer").val()
+              "user_name": $("#reviewer").val()
             },
-            success:function(result){
-              console.log("id:"+$("#travel_post_id").val()+" user:"+$("#reviewer").val()+" result:"+result);
-              if(result!=""){
-                var i=document.getElementById("thumb");
-                i.setAttribute("class","fas fa-thumbs-up");
-              }else{
-                var i=document.getElementById("thumb");
-                i.setAttribute("class","far fa-thumbs-up");
+            success: function(result) {
+              console.log("Loading point> "+"id:" + $("#travel_post_id").val() + " user:" + $("#reviewer").val() + " result:" + result);
+              if (result != "") {
+                var i = document.getElementById("thumb");
+                i.setAttribute("class", "fas fa-thumbs-up");
+              } else {
+                var i = document.getElementById("thumb");
+                i.setAttribute("class", "far fa-thumbs-up");
               }
             }
           });
         });
-        $(document).on("click","#thumb",function(){
+        //点击点赞图标时发生的事
+        $(document).on("click", "#thumb", function() {
           //console.log("click testing");
-          $.ajax({
-            url:"/likes",
-            type:"get",
-            data:{
-              "id": $("#travel_post_id").val(),
-              "user_name":$("#reviewer").val()
-            },
-            success:function(result){
-              if(result){
-                var i=document.getElementById("thumb");
-                i.setAttribute("class","fas fa-thumbs-up");
+          //若当前用户未点赞过
+          var like_status=document.getElementById("thumb").getAttribute("class");
+          console.log("like_status before click: "+like_status);
+          if (like_status=="far fa-thumbs-up") {
+            console.log("用户未点赞过，现在点赞啦！");
+            $.ajax({
+              url: "/likes",
+              type: "get",
+              data: {
+                "id": $("#travel_post_id").val(),
+                "user_name": $("#reviewer").val()
+              },
+              success: function(result) {
+                if (result) {
+                  var i = document.getElementById("thumb");
+                  i.setAttribute("class", "fas fa-thumbs-up");
+                }
               }
-            }
-          });
+            });
+          }
+          //若当前用户已经点赞过，再次点击则取消
+          else if(like_status=="fas fa-thumbs-up"){
+            console.log("用户点赞过，现在取消啦！");
+            $.ajax({
+              url: "/no_like",
+              type: "get",
+              data: {
+                "id": $("#travel_post_id").val(),
+                "user_name": $("#reviewer").val()
+              },
+              success: function(result) {
+                if (result=="") {
+                  console.log("into null");
+                  var i = document.getElementById("thumb");
+                  i.setAttribute("class", "far fa-thumbs-up");
+                }
+              }
+            });
+          }
+
         })
       </script>
 
@@ -153,30 +181,30 @@
 
       <div class="row">
         <div class="col-8">
-            <table>
-              <tbody>
-                <tr>
-                  <td><label for="reviewer">From:</label></td>
-                  <td><input id="reviewer" name="reviewer" readonly="readonly" type="text" class="form-control" value="{{Auth::user()->name}}" /></td>
-                </tr>
-                <tr>
-                  <td><label for="reviewee">To:</label></td>
-                  <td><input id="reviewee" name="reviewee" readonly="readonly" type="text" class="form-control" value="{{$travel->name}}" /></td>
-                </tr>
-                <tr>
-                  <td><label for="travel_post_id">Post ID:</label></td>
-                  <td><input id="travel_post_id" name="travel_post_id" readonly="readonly" type="text" class="form-control" value="{{$travel->id}}" /></td>
-                </tr>
-                <tr>
-                  <td><label for="comment">Content:</label></td>
-                  <td><textarea id="comment" name="comment" class="form-control" rows="4"></textarea></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><button type="submit" onclick="submit_comment()">Add</button></td>
-                </tr>
-              </tbody>
-            </table>
+          <table>
+            <tbody>
+              <tr>
+                <td><label for="reviewer">From:</label></td>
+                <td><input id="reviewer" name="reviewer" readonly="readonly" type="text" class="form-control" value="{{Auth::user()->name}}" /></td>
+              </tr>
+              <tr>
+                <td><label for="reviewee">To:</label></td>
+                <td><input id="reviewee" name="reviewee" readonly="readonly" type="text" class="form-control" value="{{$travel->name}}" /></td>
+              </tr>
+              <tr>
+                <td><label for="travel_post_id">Post ID:</label></td>
+                <td><input id="travel_post_id" name="travel_post_id" readonly="readonly" type="text" class="form-control" value="{{$travel->id}}" /></td>
+              </tr>
+              <tr>
+                <td><label for="comment">Content:</label></td>
+                <td><textarea id="comment" name="comment" class="form-control" rows="4"></textarea></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><button type="submit" onclick="submit_comment()">Add</button></td>
+              </tr>
+            </tbody>
+          </table>
           <script>
             function submit_comment() {
               $.ajax({
@@ -190,7 +218,7 @@
                 },
                 success: function(data) {
                   $("#comments").html(data);
-                  document.getElementById("comment").value="";
+                  document.getElementById("comment").value = "";
                 },
                 error: function(xhr, textStatus, error) {
                   console.log(xhr.statusText);
