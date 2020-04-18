@@ -41,7 +41,7 @@ class CommentController extends Controller
         $request->validate([
             'reviewer'=>'required',
             'reviewee'=>'required',
-            'comment'=>'required',
+            'comment'=>'required|max:255',
             'travel_post_id'=>'required'
         ]);
         $comment=new Comment([
@@ -51,11 +51,13 @@ class CommentController extends Controller
             'travel_post_id'=>$request->get('travel_post_id')
         ]);
         $comment->save();
-        //echo("<script>console.log('testing: after save()')</script>");
+        echo("<script>console.log('testing: after save()')</script>");
         $output="";
         if ($request->ajax()){
             //echo("<script>console.log('testing: enter resuest->ajax()')</script>");
-            $new_comments=Comment::where('travel_post_id',$request->get('travel_post_id'))->get();
+            $new_comments=Comment::where('travel_post_id',$request->get('travel_post_id'))
+            ->orderBy('created_at','DESC')
+            ->get();
             if($new_comments){
                 foreach($new_comments as $key=>$new_comment){
                     $output.='<tr><td>'.$new_comment->reviewer.': '.$new_comment->comment.'</td></tr>';
@@ -72,9 +74,21 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $output="";
+        if ($request->ajax()){
+            //echo("<script>console.log('testing: enter show() resuest->ajax()')</script>");
+            $new_comments=Comment::where('travel_post_id',$request->get('travel_post_id'))
+            ->orderBy('created_at','DESC')
+            ->get();
+            if($new_comments){
+                foreach($new_comments as $key=>$new_comment){
+                    $output.='<tr><td>'.$new_comment->reviewer.': '.$new_comment->comment.'</td></tr>';
+                }
+            }
+            return Response($output);
+        }
     }
 
     /**

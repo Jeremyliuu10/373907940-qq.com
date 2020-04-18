@@ -28,6 +28,8 @@ Route::resource('users', 'UserController')->middleware('auth');
 Route::resource('comments','CommentController')->middleware('auth');
 
 Route::get('/comments','CommentController@store');
+Route::get('/refresh_comments','CommentController@show');
+
 Route::get('/likes','LikeController@store');
 Route::get('/no_like','LikeController@unlike');
 

@@ -117,7 +117,7 @@
           var like_status=document.getElementById("thumb").getAttribute("class");
           console.log("like_status before click: "+like_status);
           if (like_status=="far fa-thumbs-up") {
-            console.log("用户未点赞过，现在点赞啦！");
+            //console.log("用户未点赞过，现在点赞啦！");
             $.ajax({
               url: "/likes",
               type: "get",
@@ -135,7 +135,7 @@
           }
           //若当前用户已经点赞过，再次点击则取消
           else if(like_status=="fas fa-thumbs-up"){
-            console.log("用户点赞过，现在取消啦！");
+            //console.log("用户点赞过，现在取消啦！");
             $.ajax({
               url: "/no_like",
               type: "get",
@@ -159,7 +159,7 @@
       <div class="row">
         <div class="col-8">
           <h2>Comments</h2>
-          <table>
+          <table class="table table-striped">
             <tbody id="comments">
               @foreach($comments as $comment)
               <tr>
@@ -228,6 +228,27 @@
               });
               //console.log("Testing after ajax()");
             }
+            $(function(){
+              setInterval(auto_pull_comments,1000);
+              function auto_pull_comments(){
+                $.ajax({
+                type: "get",
+                url: "/refresh_comments",
+                data: {
+                  "travel_post_id": $("#travel_post_id").val()
+                },
+                success: function(data) {
+                  $("#comments").html(data);
+                },
+                error: function(xhr, textStatus, error) {
+                  console.log(xhr.statusText);
+                  console.log(textStatus);
+                  console.log(error);
+                }
+              });
+              }
+            });
+            
           </script>
         </div>
 
