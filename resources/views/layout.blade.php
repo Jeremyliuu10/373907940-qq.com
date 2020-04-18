@@ -10,11 +10,15 @@
 		<link rel="stylesheet" href="/assets/css/noscript.css" />
 		<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<script src="/js/jquery-ui-1.10.0.custom.min.js"></script>
+		<!-- <script src="/js/jquery-ui-1.10.0.custom.min.js"></script>
 		<script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
 		<link rel="stylesheet" href="/css/theme.blue.css">
+<<<<<<< Updated upstream
     <script src="/js/jquery.tablesorter.js"></script>
     <script src="https://kit.fontawesome.com/e2dd1796cd.js" crossorigin="anonymous"></script>
+=======
+		<script src="/js/jquery.tablesorter.js"></script> -->
+>>>>>>> Stashed changes
 
 
 
@@ -44,6 +48,7 @@
 							<li id="a_posts"><a href="/travels">Sharing from others</a></li>
 							<li id="a_create"><a href="/travels/create">Post a new note</a></li>
 							<li id="a_self"><a href="/users">Personal Center</a></li>
+							<!-- <li id="a_self"><a href="/search">Search a destination</a></li> -->
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.twitter.com" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+
+use Illuminate\Support\Facades\View;
+
 use Illuminate\Http\Request;
 use App\Travel;
 use App\Tag;
@@ -83,7 +86,7 @@ class TravelController extends Controller
         $travel = Travel::find($id);
         $comments=Comment::where('travel_post_id',$id)->get();
         return view('travels.show', compact('travel','comments'));
-        return view('travels.show', compact('travel'));
+        //return view('travels.show', compact('travel'));
     }
 
     /**
@@ -154,5 +157,34 @@ class TravelController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+      echo("Inside search function");
+      $travels = Travel::all();
+
+      if (View::exists('travels.search')) {
+        return view('travels.search',compact('travels'));
+      }
+      
+    //   if ($request->ajax()) {
+    //     $output = "";
+    //     $travels = DB::table('travels')->where('city', 'LIKE', '%' . $request->search . "%")->get();
+    //     if ($travels) {
+    //        foreach ($travels as $key => $travel) {
+    //           $output .= '<tr>' .
+    //              '<td>' . $travel->id . '</td>' .
+    //              '<td>' . $travel->title . '</td>' .
+    //              '<td>' . $travel->name . '</td>' .
+    //              '<td>' . $travel->city . '</td>' .
+    //              '<td>' . $travel->description . '</td>' .
+    //              '<td>' . $travel->start_date . '</td>' .
+    //              '<td>' . $travel->end_date . '</td>' .
+    //              '</tr>';
+    //        }
+    //        return Response($output);
+    //     }
+    //  }
     }
 }
