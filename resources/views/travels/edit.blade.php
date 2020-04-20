@@ -14,13 +14,8 @@
 
 <!-- map -->
 <script src="/js/jquery-3.4.1.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=*********"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=MAPKEY***"></script>
 <script src="/js/map.js"></script>
-
-<center>
-</center>
-
-
 
 <div class="title">
         Edit the travel-notes
@@ -119,23 +114,15 @@
                                 </tr>          
                         </table>
                 </form>
-                <aside>Destination Map</aside>
+                
+                <br/><h2>Destination Map</h2>
                 <div id="map"style="width: 300px; height: 400px;"></div>
 
                 <div style="width: 300px; height: 100px;"></div>
                 
-                <aside>Destination Weather</aside>
-                <div style="width: 300px; height: 400px; background-color: #fff;">
-                        <iframe style="overflow:hidden;border:none" allowtransparency="true" width="300" height="205" src="https://www.weather-forecast.com/locations/{{ $travel->city }}/forecasts/latest/threedayfree" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe>
-                        <div style="width: 300px; height: 50px">
-                                <p style="text-align: left; color: #690; font-size: 12px;" id="cmt">
-                                        <a href="https://www.weather-forecast.com/locations/{{ $travel->city }}/forecasts/latest" rel="nofollow">
-                                        <img height="37" width="130" border="0" alt="Weather Forecast" src="https://www.weather-forecast.com/images/weatherlogo_130.gif" style="float: left; width: 130px; height: 37px; margin: 0 5px 0 8px;"/>
-                                        </a>
-                                        <!-- <a style="color: #690; text-decoration: underline;" href="https://www.weather-forecast.com/locations/Tokyo-1/forecasts/latest" rel="nofollow">View Detailed 10 Day Weather Forecast for Tokyo, webcams, weather maps & more at Weather-Forecast.com
-                                        </a> -->
-                                </p>
-                        </div>
+                <h2>Destination weather</h2>
+                <div style="width: 300px; height: 300px; background-color: #fff;">
+                        <iframe style="overflow:hidden;border:none" allowtransparency="true" width="300" height="280" src="https://www.weather-forecast.com/locations/{{ $travel->city }}/forecasts/latest/threedayfree" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe>
                 </div>
         </div>
 

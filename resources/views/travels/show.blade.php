@@ -5,6 +5,18 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="//code.jquery.com/ui/1.8.24/jquery-ui.js"></script>
 
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=MAPKEY***"></script>
+<script src="/js/map.js"></script>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>$.getJSON("http://api.hotwire.com/v1/deal/hotel?apikey=HOTELKEY***&limit=10&format=json&dest={{ $travel->city }}",
+    function(data){
+      $.each(data.Result, function(i,hotel){
+          $('<li><a href=\'' + hotel.Url + '\'>'+hotel.Headline+'</a ></li>').appendTo('#hotel_Results');
+      });
+    });
+</script>
 
 <style>
   .uper {
@@ -51,7 +63,9 @@
               </tr>
               <tr>
                 <td>Destination</td>
-                <td>{{ $travel->city }}</td>
+                <!-- <td id="city" value="{{ $travel->city }}">{{ $travel->city }}</td> -->
+                <td><input id="city" name="city" type="text" value="{{ $travel->city }}" readonly="readonly" /></td>
+
               </tr>
               <tr>
                 <td>Tag</td>
@@ -82,8 +96,16 @@
           </table>
         </div>
         <div class="col-4">
-          <aside>在这里放API</aside>
-          <!-- TODO: Hotel and Maps?? -->
+        <br/><h2>Destination Map</h2>
+                <div id="map"style="width: 300px; height: 400px;"></div>
+
+        <br/><h2>Hotel Results</h2>
+        <p>
+          <div>
+            <ol id="hotel_Results"></ol>
+          </div>
+        </p>  
+
         </div>
       </div>
 

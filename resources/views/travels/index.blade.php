@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="/css/theme.blue.css">
 		<script src="/js/jquery.tablesorter.js"></script>
 
-
 <!-- Main -->
 <div id="main">
 

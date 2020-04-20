@@ -21,9 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/travels/create',function(){
-    return view('travels.create');
-});
+Route::get('/create','TravelController@create')->middleware('auth');
 
 Route::get('/delete','TravelController@delete');
 
@@ -41,5 +39,3 @@ Route::get('/fullsearch','SearchController@search2');
 Route::resource('users', 'UserController')->middleware('auth');
 
 Route::get('/comments', 'CommentController@store');
-
-// Route::get('/search','SearchController@search');

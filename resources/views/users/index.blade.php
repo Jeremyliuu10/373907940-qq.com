@@ -2,14 +2,6 @@
 
 @section('content')
 
-   <!-- ajax    -->
-<meta name="_token" content="{{ csrf_token() }}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<!-- Tablesorter: required -->
-<link rel="stylesheet" type="text/css" href="/css/theme.blue.css">
-  <script type="text/javascript"  src="/js/jquery-ui-1.10.0.custom.min.js"></script>
-  <script type="text/javascript" src="/js/jquery.tablesorter.js"></script>
-  
 <aside>
 <!-- Main -->
 <div id="main">
@@ -17,7 +9,7 @@
     <table class="table table-striped" border="1px" width="80%">
       <thead>
          <tr>
-          <td><label id="username" name="user">{{ Auth::user()->name }}'s content list</label></td>
+         <br/><h2>{{ Auth::user()->name }}'s content list</h2>
           </tr>
           <tr>
           <td><label >if you want to modify / delete your content, please click the id or title☺</label></td>
@@ -28,7 +20,7 @@
              
     </table>
 
-    <table id = "table-search" class="tablesorter table table-striped" width="80%">
+    <table id = "mytable" width="80%">
 
         <tr>
           <td>ID</td>
@@ -40,7 +32,7 @@
           <td>Travel End Date</td>
         </tr>
       </thead>
-      <tbody id = "search-list">
+      <tbody id = "search-list" >
         @foreach($travels as $travel)
         <tr>
           <td><a href="{{ route('travels.edit',$travel->id)}}">{{$travel->id}}</a></td>
@@ -66,16 +58,7 @@
         window.location = '/travels/create';
           });
 </script>
-
-<script type="text/javascript">
-
-      $("#table-search").tablesorter({ 
-          theme: 'blue',
-          sortInitialOrder: "asc",
-          sortList: [[0,0]],
-          header:{1:{sorter:false}}, 
-      });
-</script>
+     
 
 
 
