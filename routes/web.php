@@ -25,20 +25,9 @@ Route::get('/travels/create',function(){
     return view('travels.create');
 });
 
-// Route::get('/travels/search',function(){
-//     return view('travels.search');
-// });
+Route::get('/delete','TravelController@delete');
 
-// Route::get('/travels/search',function(){
-//     $travels=Travel::all();
-//     if (View::exists('travels.search')) {
-//         echo("<script>console.log('existing travels.search')</script>");
-//         return view('travels.search',compact('travels'));
-//     }else{
-//         echo("<script>console.log('doesn't exist travels.search')</script>");
-//         return view('travels',compact('travels'));
-//     }
-// });
+Route::resource('users', 'UserController')->middleware('auth');
 
 Route::get('/search','SearchController@search');
 

@@ -20,9 +20,8 @@
           <td><label id="username" name="user">{{ Auth::user()->name }}'s content list</label></td>
           </tr>
           <tr>
-          <td><label >if you want to change your content, please click the id or title☺</label></td>
+          <td><label >if you want to modify / delete your content, please click the id or title☺</label></td>
            <td>
-               <!-- <button type="button" id="MyContent" >Edit My Content</button> -->
                 <button type="button" id="CreateNewOne">Create New One</button>
             </td>
         </tr>
@@ -79,27 +78,5 @@
 </script>
 
 
-<!-- <script type="text/javascript">
-    $("#MyContent").click(function(){
-        
-          window.location = '/travels/create';
-         var username=document.getElementById("username").innerHTML;
-        //  alter(username);
-        //   $value = Auth::user()->name;
-          $.ajax({
-              type : 'get',
-              url : '{{URL::to('user')}}',
-              data:{'search':$usename},
-              success:function(data){
-                  $('#search-list').html(data);
-                  $('#table-search').trigger("update");
-              }
-          });          
-      });
-  </script> 
-</script>
-  <script type="text/javascript">
-  $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-  </script>-->
 
 @endsection

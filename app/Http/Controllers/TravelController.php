@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Travel;
 use App\Tag;
 use App\Comment;
+use App\Like;
 
 class TravelController extends Controller
 {
@@ -54,6 +55,7 @@ class TravelController extends Controller
                   'start_date'=>'required|date',
                   'end_date'=>'required|date'
                   ]);
+
                 //2. create a new book model
                 $travel = new Travel([
                   'name' => $request->get('name'),
@@ -101,7 +103,7 @@ class TravelController extends Controller
         $travel = Travel::find($id);
         return view('travels.edit', compact('travel'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -147,7 +149,16 @@ class TravelController extends Controller
 
                   return redirect('/travels')->with('success', 'Travel notes has been updated');
     }
+    public function delete(Request $request)
+    {
 
+        $travel = Travel::find($request->get('id'));
+        Tag::where('tag_name', $travel->tag)->decrement('tag_count');
+        Comment::where('travel_post_id', $request->get('id'))->delete();
+        Like::where('id', $request->get('id'))->delete();
+        Travel::where('id', $request->get('id'))->delete();
+        return redirect('/users')->with('success', 'Travel notes has been deleted');
+      }
     /**
      * Remove the specified resource from storage.
      *

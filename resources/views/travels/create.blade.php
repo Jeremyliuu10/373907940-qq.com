@@ -1,10 +1,13 @@
 
 @extends('layout')
+
 @section('content')
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.24/themes/base/jquery-ui.css">
 <script type="text/javascript" src="//code.jquery.com/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="//code.jquery.com/ui/1.8.24/jquery-ui.js"></script>
+
+
 
 <div class="title">
         Add a New Travel notes
@@ -41,12 +44,11 @@
                                         </tr>
                                         <tr>
                                                 <td><label for="name">Traveller Name</label></td>
-                                                <td><input name="name" type="text" class="form-control" value="{{ Auth::user()->name }}" /></td>
+                                                <td><input name="name" type="text" class="form-control" readonly="readonly" value="{{ Auth::user()->name }}" /></td>
                                         </tr>
                                         <tr>
                                                 <td><label for="name">Travel City</label></td>
-                                                <td><input name="city" type="text" class="form-control" /></td>
-                                        </tr>
+                                                <td><input name="city" type="text" class="form-control" />                                        </tr>
                                         <tr>
                                                 <td><label for="name">Tag</label></td>
                                                 <td>
@@ -92,6 +94,21 @@
 
 </div>
 
+
+<div style="width: 475px; background-color: #fff;">
+        <iframe style="overflow:hidden;border:none" allowtransparency="true" width="475" height="205" src="https://www.weather-forecast.com/locations/Tokyo-1/forecasts/latest/threedayfree" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+        <div style="width: 475px; height: 50px">
+                <p style="text-align: left; color: #690; font-size: 12px;" id="cmt">
+                        <a href="https://www.weather-forecast.com/locations/Tokyo-1/forecasts/latest" rel="nofollow">
+                        <img height="37" width="130" border="0" alt="Weather Forecast" src="https://www.weather-forecast.com/images/weatherlogo_130.gif" style="float: left; width: 130px; height: 37px; margin: 0 5px 0 8px;"/>
+                        </a>
+                        <a style="color: #690; text-decoration: underline;" href="https://www.weather-forecast.com/locations/Tokyo-1/forecasts/latest" rel="nofollow">View Detailed 10 Day Weather Forecast for Tokyo, webcams, weather maps & more at Weather-Forecast.com
+                        </a>
+                </p>
+        </div>
+</div>
+
+
 <script>
         $("#datepicker").datepicker({
                 dateFormat: "yy-mm-dd"
@@ -100,70 +117,5 @@
                 dateFormat: "yy-mm-dd"
         });
 </script>
-
-<!-- <div id="map">
-<table class="table table-striped" >
-                <tbody>
-                        <tr>
-                                <td width="20%"><label for="name">Add a map</label></td>
-                        </tr>
-                <tbody>
-</table>
-</div>
-
-<head>
-         <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-        <title>创建Google地图实例</title>
-        <style type="text/css">
-                html{height:100%}
-                body{height:100%;margin:0px;padding:0px}
-                #map{height:100%}
-        </style>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="http://code.google.com/apis/gears/gears_init.js"></script>
-        <script language="javascript">
-                var map; //定义一个Map对象
-                        //初始化一个最简单的地图
-                window.onload=function()
-                {
-                                //实例化LatLng，LatLng是标注经纬度的对象，用它来控制地图中心显示的坐标
-                var latlng = new google.maps.LatLng(31.88311, 117.315724);
-                                //定义MapOptions对象属性
-                var myOptions =
-                {
-                zoom: 14,               //地图缩放级别
-                center: latlng,         //中心点坐标
-                mapTypeId: google.maps.MapTypeId.ROADMAP //地图显示的类型。有地图(ROADMAP)、卫星(SATELLITE)、混合(HYBRID)、地形(TERRAIN)四种类型
-                }
-                        //创建地图。构造器中有两个参数。第一个参数是显示层div的对象。第二个参数是myOptions
-                map = new google.maps.Map(document.getElementById("map"), myOptions);
-                }
-        </script>
-</head> -->
-
-
-<!-- 
-<script type="text/javascript">
-$(document).ready(function () {
-     var url="·····/compare/test"; //访问后台去数据库查询select的选项,此处需填写后台接口路径
-    $.ajax({
-        type:"get",
-        url:url,
-        success:function(userList){
-            var unitObj=document.getElementById("mySelect"); //页面上的<html:select>元素
-            if(userList!=null){ //后台传回来的select选项
-                for(var i=0;i<userList.length;i++){
-                    //遍历后台传回的结果，一项项往select中添加option
-                    unitObj.options.add(new Option(userList[i].name,userList[i].name));
-                }
-            }
-        },
-        error:function(){
-            J.alert('Error');
-        }
-    })
-})
-</script> -->
-
 
 @endsection
