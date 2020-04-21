@@ -58,7 +58,7 @@
                 <td>{{ $travel->title }}</td>
               </tr>
               <tr>
-                <td>Traveller</td>
+                <td>Traveler</td>
                 <td>{{ $travel->name }}</td>
               </tr>
               <tr>
@@ -89,8 +89,8 @@
               </tr>
               <!-- TODO: Likes -->
               <tr>
+                <td><h4 style="color:red">LIKE</h4></td>
                 <td><i id="thumb" class="far fa-thumbs-up"></i></td>
-                <td></td>
               </tr>
             </tbody>
           </table>
