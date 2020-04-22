@@ -15,6 +15,10 @@
           <td><label >if you want to modify / delete your content, please click the id or title☺</label></td>
            <td>
                 <button type="button" id="CreateNewOne">Create New One</button>
+                <button class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}</button>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf</form>
             </td>
         </tr>
              
