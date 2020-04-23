@@ -6,11 +6,11 @@
 <script type="text/javascript" src="//code.jquery.com/ui/1.8.24/jquery-ui.js"></script>
 
 <script src="/js/jquery-3.4.1.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=MAPKEY***"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9gsAbmlzmyNPEY9CJFEuInJPDFLVdPm4"></script>
 <script src="/js/map.js"></script>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script>$.getJSON("http://api.hotwire.com/v1/deal/hotel?apikey=HOTELKEY***&limit=10&format=json&dest={{ $travel->city }}",
+<script>$.getJSON("http://api.hotwire.com/v1/deal/hotel?apikey=cqbkmmxbhfc9wez4ceytwz4c&limit=10&format=json&dest={{ $travel->city }}",
     function(data){
       $.each(data.Result, function(i,hotel){
           $('<li><a href=\'' + hotel.Url + '\'>'+hotel.Headline+'</a ></li>').appendTo('#hotel_Results');

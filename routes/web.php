@@ -24,12 +24,14 @@ Route::get('/create','TravelController@create')->middleware('auth');
 Route::get('/delete','TravelController@delete');
 Route::resource('users', 'UserController')->middleware('auth');
 
-Route::get('/search','SearchController@search');
-Route::get('/fullsearch','SearchController@search2');
+Route::get('/search','TravelController@search');
 
 Route::get('/comments','CommentController@store');
 Route::get('/refresh_comments','CommentController@show');
 
 Route::get('/likes','LikeController@store');
 Route::get('/no_like','LikeController@unlike');
+Route::get('/fullsearch','TravelController@search2');
+
+Route::resource('users', 'UserController')->middleware('auth');
 
