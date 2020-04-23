@@ -36,7 +36,6 @@
                 <form method="post" action="{{ route('travels.store') }}">
                         {{ csrf_field() }}
 
-                        <!-- <table class="table table-striped" border="1px" style="margin: 50px;"> -->
                         <table class="table table-striped">
                                 <tbody>
                                         <tr>
@@ -53,7 +52,6 @@
                                         <tr>
                                                 <td><label for="name">Tag</label></td>
                                                 <td>
-                                                        <!-- <INPUT type="hidden" id="tag" >  -->
                                                         <select id="tag" name="tag">
                                                                 <option value="0" selected="selected">Please choose one tag</option>
                                                                 <option value="Modern city">Modern city</option>
@@ -87,7 +85,6 @@
                                                 <td><button type="submit">Add</button></td>
                                         </tr>
                                 </tbody>
-                                <!-- TODO:URL->TAGS;  -->
                         </table>
 
                 </form>

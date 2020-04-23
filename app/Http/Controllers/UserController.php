@@ -33,8 +33,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        $travel = new Travel;
-        return view('travels.create', compact('travel'));
     }
 
     /**
@@ -57,8 +55,6 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        $travel = Travel::find($id);
-        return view('travels.show', compact('travel'));
     }
 
     /**
