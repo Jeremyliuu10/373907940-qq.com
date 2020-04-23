@@ -48,10 +48,10 @@ class TravelController extends Controller
         //1. validate the inputted data
                 $request->validate([
                   'name'=>'required',
-                  'title'=> 'required',
-                  'description'=> 'required',
-                  'city'=> 'required',
-                  'tag'=> 'required',
+                  'title'=> 'required|min:2',
+                  'description'=> 'required|min:2',
+                  'city'=> 'required|alpha_num|min:2',
+                  'tag'=> 'required|min:2',
                   'start_date'=>'required|date',
                   'end_date'=>'required|date'
                   ]);
@@ -117,9 +117,9 @@ class TravelController extends Controller
          //1. validate the inputted data
                 $request->validate([
                   'name'=>'required',
-                  'title'=> 'required',
-                  'description'=> 'required',
-                  'city'=> 'required',
+                  'title'=> 'required|min:2',
+                  'description'=> 'required|min:2',
+                  'city'=> 'required|alpha_num|min:2',
                   'tag'=> 'required',
                   'start_date'=>'required|date',
                   'end_date'=>'required|date'

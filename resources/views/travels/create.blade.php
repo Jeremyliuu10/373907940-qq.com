@@ -30,7 +30,7 @@
                         <thead>
                                 <tr>
                                          <br/><h2>Welcome! {{ Auth::user()->name }} </h2>
-                                        <td><label id="username" name="user">you can record your new travel story☺ </label></td>
+                                        <td><label id="username" name="user">you can record your new travel story☺  All blanks need to be filled in </label></td>
                                 </tr>
                 </table>
                 <form method="post" action="{{ route('travels.store') }}">
