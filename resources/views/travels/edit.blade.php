@@ -14,7 +14,7 @@
 
 <!-- map -->
 <script src="/js/jquery-3.4.1.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9gsAbmlzmyNPEY9CJFEuInJPDFLVdPm4"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=MAPKEY***"></script>
 <script src="/js/map.js"></script>
 
 <div class="title">
